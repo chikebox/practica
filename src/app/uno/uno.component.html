@@ -1,0 +1,6 @@
+<input type="number" [(ngModel)]="id" placeholder="Buscar tarea por id">
+<button (click)="buscarTarea()">Buscar la tarea</button>
+<p *ngIf="tareas.length===0">No existe esa tarea</p>
+<section *ngFor="let tarea of tareas">
+    <input type="checkbox" [checked]="tarea.completed"><span>{{tarea.id}}</span> <span>{{tarea.title}}</span>
+</section>

@@ -1,0 +1,34 @@
+
+  <div class="col-xs-6">
+    <div class="row">
+      <p><a [routerLink]="['crud']">Crud</a></p>
+      <label for="filtro">Filtro:</label> <input type="text" [(ngModel)]="searchText" placeholder="Buscar por nombre o dirección"><br>
+      <input type="checkbox"[(ngModel)]="alquiler">Alquiler <br>
+      <input type="checkbox"[(ngModel)]="venta">Venta <br>
+      <span>Precio:</span> <label for="Precio"> min:</label> <input [(ngModel)]="minimo" type="number"> <label for="precio">max:</label> <input [(ngModel)]="maximo" type="number">
+    </div>
+    <div *ngFor="let casa of casas | filter : searchText : alquiler : venta : minimo : maximo" class="col-xs-12 col-sm-6">
+      <div (click)="seleccionarCasa($event, casa)" [class.active]="casa==casaSeleccionada" class="thumbnail">
+        <img id="imagenListado" src="{{casa.foto}}" alt="{{ casa.nombre }}">
+        <p ><span id="nombre">{{ casa.nombre | uppercase }}</span> <span id="precio">{{ casa.precio }} euros</span></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-6">
+    <div *ngIf="casaSeleccionada.nombre!=''"class="thumbnail">
+      <img src="{{casaSeleccionada.foto}}" alt="{{casaSeleccionada.nombre}}">
+      <div class="caption">
+          <p><span id="nombre">{{ casaSeleccionada.nombre | uppercase }}</span> <span id="precio">{{ casaSeleccionada.precio }}</span></p>
+          <p id="direccion"><i class="fa fa-map-marker textoRojo" aria-hidden="true"></i>{{casaSeleccionada.direccion}}</p>
+          <p id="habitaciones"><i class="fa fa-home" aria-hidden="true"></i><span>Habitaciones:</span><span>{{casaSeleccionada.habitaciones}}</span></p>
+          <p id="servicios">Servicios:</p>
+          <ul>
+            <li id="listaServicios" *ngFor="let servicio of casaSeleccionada.servicios">
+              <input type="checkbox"[checked]="servicio.tiene">
+              <span>{{servicio.nombre}}</span>
+            </li>
+          </ul>   
+      </div>
+    </div>
+  </div>
+

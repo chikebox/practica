@@ -1,0 +1,33 @@
+#nombre{
+    float:left;
+}
+#precio{
+    float:right;
+}
+.thumbnail{
+    padding:20px;
+}
+#direccion{
+    margin-top:40px;
+}
+#habitaciones{
+    margin-top:20px;
+}
+#servicios{
+    margin-top:20px;
+}
+#listaServicios{
+    list-style: none;
+    width:40%;
+    display:inline-block;
+}
+#imagenListado{
+    height:100px;
+    width:auto;
+}
+.active{
+    border:1px solid blue;
+}
+.textoRojo{
+    color:red;
+}
